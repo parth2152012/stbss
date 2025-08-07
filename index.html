@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STBSS Foundation</title>
+    <link rel="icon" href="images/logo.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Mobile menu specific styles */
+        .mobile-nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .mobile-nav-menu.open {
+            max-height: 500px;
+            /* Adjust this value to be large enough to contain all menu items */
+        }
+
+        .mobile-nav-link {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .mobile-nav-menu.open .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom styles for the hero section background */
+        .hero-bg {
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Keyframe for the flash animation on the input field */
+        @keyframes flash-border {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .animate-flash {
+            animation: flash-border 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <nav class="bg-white/70 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-4xl font-bold text-gray-800 flex items-center space-x-4">
+                    <img src="images/logo.jpg" alt="Charity Logo" class="h-16 rounded-lg">
+                    <span>STBSS</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8 ml-10">
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-green-600"
+                        data-lang-key="home">HOME</a>
+                    <a href="about.html" class="text-gray-600 font-medium hover:text-green-600"
+                        data-lang-key="about">ABOUT</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600"
+                        data-lang-key="volunteer">VOLUNTEER</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
+                    <a href="media.html" class="text-gray-600 font-medium hover:text-green-600"
+                        data-lang-key="media">MEDIA</a>
+                    <a href="contact.html" class="text-gray-600 font-medium hover:text-green-600"
+                        data-lang-key="contact">CONTACT</a>
+                </div>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-gray-800 hover:text-green-600 focus:outline-none p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="relative">
+                    <select id="language-select-desktop"
+                        class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                    </select>
+                </div>
+                <button
+                    class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
+                    data-lang-key="donate">DONATE</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-nav-menu w-full bg-white/90 backdrop-blur-sm shadow-md z-40 md:hidden">
+        <div class="flex flex-col items-center py-4 space-y-4">
+            <a href="index.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="home">HOME</a>
+            <a href="about.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="about">ABOUT</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="volunteer">VOLUNTEER</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="blog">BLOG</a>
+            <a href="media.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="media">MEDIA</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600"
+                data-lang-key="contact">CONTACT</a>
+            <div class="relative w-fit mt-4">
+                <select id="language-select-mobile"
+                    class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+            <button
+                class="mobile-nav-link bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300 w-fit"
+                data-lang-key="donate">DONATE</button>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-bg h-screen flex items-center justify-center text-center text-white">
+            <div class="bg-gray-900/50 p-8 rounded-xl max-w-4xl mx-auto backdrop-blur-sm">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up" data-lang-key="heroTitle">Empowering
+                    Communities, One Step at a Time</h1>
+                <p class="text-xl md:text-2xl font-light mb-8 animate-fade-in-up delay-200"
+                    data-lang-key="heroSubtitle">
+                    Join us in our mission to create a brighter future for underserved children and their families.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#"
+                        class="bg-green-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-green-700 transition duration-300 transform hover:scale-105 animate-pop-in"
+                        data-lang-key="donateNow">DONATE NOW</a>
+                    <a href="about.html"
+                        class="bg-white text-gray-800 font-semibold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 transform hover:scale-105 animate-pop-in delay-400"
+                        data-lang-key="learnMore">LEARN MORE</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="whatWeDoTitle">What We Do
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12" data-lang-key="whatWeDoSubtitle">
+                    We focus on key areas to provide comprehensive support and empowerment to those in need.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="educationTitle">Education
+                            for All</h3>
+                        <p class="text-gray-700" data-lang-key="educationText">
+                            We provide quality education, school supplies, and scholarships to ensure every child has
+                            the opportunity to learn and grow.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-heartbeat"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="healthTitle">Health &
+                            Wellness</h3>
+                        <p class="text-gray-700" data-lang-key="healthText">
+                            Our health camps and wellness programs focus on nutrition, hygiene, and medical support for
+                            families in rural and urban communities.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-hands-helping"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="communityTitle">Community
+                            Empowerment</h3>
+                        <p class="text-gray-700" data-lang-key="communityText">
+                            Through vocational training and skills development, we empower individuals to achieve
+                            financial independence and build a better future.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="howYouCanHelpTitle">How You
+                    Can Help</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12" data-lang-key="howYouCanHelpSubtitle">
+                    Your support is vital to our success. Here's how you can make a difference.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-hands-heart"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="volunteerCardTitle">Become a
+                            Volunteer</h3>
+                        <p class="text-gray-700 mb-4" data-lang-key="volunteerCardText">
+                            Lend your time and skills to our projects. Your effort can change lives.
+                        </p>
+                        <a href="#"
+                            class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors duration-300"
+                            data-lang-key="getStarted">GET STARTED</a>
+                    </div>
+                    <div
+                        class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-donate"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="donateCardTitle">Make a
+                            Donation</h3>
+                        <p class="text-gray-700 mb-4" data-lang-key="donateCardText">
+                            Your financial contribution directly supports our programs and services.
+                        </p>
+                        <a href="#"
+                            class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition-colors duration-300"
+                            data-lang-key="donateNowCard">DONATE NOW</a>
+                    </div>
+                    <div
+                        class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-bullhorn"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="advocateCardTitle">Be Our
+                            Advocate</h3>
+                        <p class="text-gray-700 mb-4" data-lang-key="advocateCardText">
+                            Help us spread the word by sharing our mission and events on social media.
+                        </p>
+                        <a href="#"
+                            class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors duration-300"
+                            data-lang-key="learnMoreCard">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="latestBlogPostsTitle">
+                    Latest Blog Posts</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12" data-lang-key="latestBlogPostsSubtitle">
+                    Read our stories, insights, and updates from the field.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="#"
+                        class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <img src="https://placehold.co/800x600/E0F2F7/000?text=Blog+Post+1" alt="Blog Post Image 1"
+                            class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 text-left" data-lang-key="blogPost1Title">
+                            The Power of a Pen: How Donations Changed a School</h3>
+                        <p class="text-sm text-gray-500 text-left mb-2" data-lang-key="blogPost1Date">July 20, 2025</p>
+                        <p class="text-gray-700 text-left" data-lang-key="blogPost1Text">
+                            A touching story about how a simple school supply drive transformed a small rural school and
+                            the lives of its students.
+                        </p>
+                    </a>
+                    <a href="#"
+                        class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <img src="https://placehold.co/800x600/E0F7F2/000?text=Blog+Post+2" alt="Blog Post Image 2"
+                            class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 text-left" data-lang-key="blogPost2Title">
+                            Volunteer Spotlight: Meet Our Heroes on the Ground</h3>
+                        <p class="text-sm text-gray-500 text-left mb-2" data-lang-key="blogPost2Date">July 15, 2025</p>
+                        <p class="text-gray-700 text-left" data-lang-key="blogPost2Text">
+                            We shine a light on the incredible people who dedicate their time and energy to making our
+                            mission a reality.
+                        </p>
+                    </a>
+                    <a href="#"
+                        class="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                        <img src="https://placehold.co/800x600/F7E0F2/000?text=Blog+Post+3" alt="Blog Post Image 3"
+                            class="rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2 text-left" data-lang-key="blogPost3Title">
+                            Celebrating Success: Our Latest Health Camp in numbers</h3>
+                        <p class="text-sm text-gray-500 text-left mb-2" data-lang-key="blogPost3Date">July 10, 2025</p>
+                        <p class="text-gray-700 text-left" data-lang-key="blogPost3Text">
+                            An in-depth look at the impact of our recent health camp, from the number of patients served
+                            to the lives saved.
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-gray-800 text-white py-16 md:py-24">
+            <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4" data-lang-key="callToActionTitle">Your Small Help Makes
+                    a Big Difference</h2>
+                <p class="text-xl md:text-2xl font-light max-w-2xl mb-8" data-lang-key="callToActionSubtitle">
+                    Join our community of supporters and help us continue our vital work.
+                </p>
+                <div class="w-full max-w-xl bg-gray-900 rounded-xl p-6 md:p-8 shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4" data-lang-key="makeDonationTitle">Make a Donation</h3>
+                    <p class="text-gray-400 mb-6" data-lang-key="chooseAmountText">Choose a preset amount or enter a
+                        custom one.</p>
+                    <div class="mb-6 text-left">
+                        <label for="currency-select" class="block text-sm font-medium text-gray-400 mb-2"
+                            data-lang-key="selectCurrency">Select Currency:</label>
+                        <select id="currency-select"
+                            class="w-full bg-gray-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="USD" data-symbol="$">USD ($)</option>
+                            <option value="EUR" data-symbol="€">EUR (€)</option>
+                            <option value="INR" data-symbol="₹">INR (₹)</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                        <label
+                            class="bg-gray-700 rounded-lg p-3 cursor-pointer hover:bg-green-600 transition-colors duration-300">
+                            <input type="radio" name="amount" value="5" class="hidden" />
+                            <span class="text-xl font-medium block"><span class="currency-symbol">$</span>5</span>
+                        </label>
+                        <label
+                            class="bg-gray-700 rounded-lg p-3 cursor-pointer hover:bg-green-600 transition-colors duration-300">
+                            <input type="radio" name="amount" value="10" class="hidden" />
+                            <span class="text-xl font-medium block"><span class="currency-symbol">$</span>10</span>
+                        </label>
+                        <label
+                            class="bg-gray-700 rounded-lg p-3 cursor-pointer hover:bg-green-600 transition-colors duration-300">
+                            <input type="radio" name="amount" value="25" class="hidden" />
+                            <span class="text-xl font-medium block"><span class="currency-symbol">$</span>25</span>
+                        </label>
+                        <label
+                            class="bg-gray-700 rounded-lg p-3 cursor-pointer hover:bg-green-600 transition-colors duration-300">
+                            <input type="radio" name="amount" value="50" class="hidden" />
+                            <span class="text-xl font-medium block"><span class="currency-symbol">$</span>50</span>
+                        </label>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <span class="text-xl font-medium text-gray-400" id="custom-currency-symbol">$</span>
+                        <input type="number" id="donationAmountInput" min="0" placeholder="Enter custom amount"
+                            class="w-full bg-gray-700 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-shadow" />
+                    </div>
+                    <button
+                        class="w-full bg-green-600 text-white text-xl font-semibold py-3 rounded-full hover:bg-green-700 transition-colors duration-300 transform hover:scale-105"
+                        data-lang-key="donateButton">
+                        DONATE
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-950 text-gray-400 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4" data-lang-key="accountabilityTitle">ACCOUNTABILITY
+                    </h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="financialInfo">Financial
+                                information</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="childSafeguarding">Child
+                                safeguarding</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="virtualTour">Virtual tour</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="whistleblowerPolicy">Whistleblower
+                                policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4" data-lang-key="importantLinksTitle">IMPORTANT
+                        LINKS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="donorPortal">Donor portal</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="faqs">FAQs</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="hermannGmeinerSchools">Hermann
+                                Gmeiner Schools</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="institutions">And institutions</a>
+                        </li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="vocationalTrainingCentre">Vocational
+                                Training Centre</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4" data-lang-key="resourcesTitle">RESOURCES</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="annualReport">Annual report</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="blogFooter">Blog</a></li>
+                        <li><a href="media.html" class="hover:text-green-500" data-lang-key="mediaFooter">Media</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="sitemap">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4" data-lang-key="getInvolvedTitle">GET INVOLVED</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="partnerships">Partnerships</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="philanthropy">Philanthropy</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="giveInCelebration">Give in
+                                celebration</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="schoolProgramme">School
+                                programme</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="makeADonation">Make a donation</a>
+                        </li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="otherWaysToGive">Other ways to
+                                give</a></li>
+                        <li><a href="#" class="hover:text-green-500" data-lang-key="contactUs">Contact us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-4" data-lang-key="stbssFoundationTitle">STBSS
+                        FOUNDATION</h4>
+                    <address class="space-y-2">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-location-dot mt-1"></i>
+                            <p data-lang-key="address">Kinhola, Badnapur, Maharashtra 431213</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                            <a href="https://www.google.com/maps/place/SHRITARASHAVALI+BAHUUDDESHIYA+SEVABHAVI+SANSTHA/@20.0218405,75.7082063,20.46z/data=!4m6!3m5!1s0x3bdbb34900214e21:0xdee6e036d05fa0!8m2!3d20.0217799!4d75.7083013!16s%2Fg%2F11q3cx70bn?entry=ttu&g_ep=EgoyMDI1MDgwNC4wIKXMDSoASAFQAw%3D%3D"
+                                class="hover:text-green-500" data-lang-key="viewOnMap"><i
+                                    class="fas fa-map-marked-alt mr-2"></i> View on Map
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+919876543210" class="hover:text-green-500" data-lang-key="contactPhone">(+91)
+                                9923740706 / 942323912 / 8605850580</a>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@stbss.org" class="hover:text-green-500"
+                                data-lang-key="contactEmail">shritarashavalisanstha30.7.2016@gmail.com</a>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            <hr class="border-gray-700 my-8">
+            <div class="flex flex-col md:flex-row items-center justify-between text-sm">
+                <p data-lang-key="copyright">&copy; 2025 STBSS Foundation. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-green-500"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-green-500"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-green-500"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-green-500"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-green-500"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const donationRadios = document.querySelectorAll('input[name="amount"]');
+            const donationInput = document.getElementById('donationAmountInput');
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const currencySelect = document.getElementById('currency-select');
+            const currencySymbols = document.querySelectorAll('.currency-symbol');
+            const customCurrencySymbol = document.getElementById('custom-currency-symbol');
+
+            // Language selectors
+            const languageSelectDesktop = document.getElementById('language-select-desktop');
+            const languageSelectMobile = document.getElementById('language-select-mobile');
+
+            // Language translations object
+            const translations = {
+                en: {
+                    phoneNumber: "(+91) 9923740706 / 942323912 / 8605850580",
+                    emailAddress: "shritarashavalisanstha30.7.2016@gmail.com",
+                    register: "REGISTER",
+                    login: "LOGIN",
+                    home: "HOME",
+                    about: "ABOUT",
+                    volunteer: "VOLUNTEER",
+                    blog: "BLOG",
+                    media: "MEDIA",
+                    contact: "CONTACT",
+                    donate: "DONATE",
+                    heroTitle: "Empowering Communities, One Step at a Time",
+                    heroSubtitle: "Join us in our mission to create a brighter future for underserved children and their families.",
+                    donateNow: "DONATE NOW",
+                    learnMore: "LEARN MORE",
+                    whatWeDoTitle: "What We Do",
+                    whatWeDoSubtitle: "We focus on key areas to provide comprehensive support and empowerment to those in need.",
+                    educationTitle: "Education for All",
+                    educationText: "We provide quality education, school supplies, and scholarships to ensure every child has the opportunity to learn and grow.",
+                    healthTitle: "Health & Wellness",
+                    healthText: "Our health camps and wellness programs focus on nutrition, hygiene, and medical support for families in rural and urban communities.",
+                    communityTitle: "Community Empowerment",
+                    communityText: "Through vocational training and skills development, we empower individuals to achieve financial independence and build a better future.",
+                    howYouCanHelpTitle: "How You Can Help",
+                    howYouCanHelpSubtitle: "Your support is vital to our success. Here's how you can make a difference.",
+                    volunteerCardTitle: "Become a Volunteer",
+                    volunteerCardText: "Lend your time and skills to our projects. Your effort can change lives.",
+                    getStarted: "GET STARTED",
+                    donateCardTitle: "Make a Donation",
+                    donateCardText: "Your financial contribution directly supports our programs and services.",
+                    donateNowCard: "DONATE NOW",
+                    advocateCardTitle: "Be Our Advocate",
+                    advocateCardText: "Help us spread the word by sharing our mission and events on social media.",
+                    learnMoreCard: "LEARN MORE",
+                    latestBlogPostsTitle: "Latest Blog Posts",
+                    latestBlogPostsSubtitle: "Read our stories, insights, and updates from the field.",
+                    blogPost1Title: "The Power of a Pen: How Donations Changed a School",
+                    blogPost1Date: "July 20, 2025",
+                    blogPost1Text: "A touching story about how a simple school supply drive transformed a small rural school and the lives of its students.",
+                    blogPost2Title: "Volunteer Spotlight: Meet Our Heroes on the Ground",
+                    blogPost2Date: "July 15, 2025",
+                    blogPost2Text: "We shine a light on the incredible people who dedicate their time and energy to making our mission a reality.",
+                    blogPost3Title: "Celebrating Success: Our Latest Health Camp in numbers",
+                    blogPost3Date: "July 10, 2025",
+                    blogPost3Text: "An in-depth look at the impact of our recent health camp, from the number of patients served to the lives saved.",
+                    callToActionTitle: "Your Small Help Makes a Big Difference",
+                    callToActionSubtitle: "Join our community of supporters and help us continue our vital work.",
+                    makeDonationTitle: "Make a Donation",
+                    chooseAmountText: "Choose a preset amount or enter a custom one.",
+                    selectCurrency: "Select Currency:",
+                    donateButton: "DONATE",
+                    accountabilityTitle: "ACCOUNTABILITY",
+                    financialInfo: "Financial information",
+                    childSafeguarding: "Child safeguarding",
+                    virtualTour: "Virtual tour",
+                    whistleblowerPolicy: "Whistleblower policy",
+                    importantLinksTitle: "IMPORTANT LINKS",
+                    donorPortal: "Donor portal",
+                    careers: "Careers",
+                    faqs: "FAQs",
+                    hermannGmeinerSchools: "Hermann Gmeiner Schools",
+                    institutions: "And institutions",
+                    vocationalTrainingCentre: "Vocational Training Centre",
+                    resourcesTitle: "RESOURCES",
+                    annualReport: "Annual report",
+                    blogFooter: "Blog",
+                    mediaFooter: "Media",
+                    sitemap: "Sitemap",
+                    getInvolvedTitle: "GET INVOLVED",
+                    partnerships: "Partnerships",
+                    philanthropy: "Philanthropy",
+                    giveInCelebration: "Give in celebration",
+                    schoolProgramme: "School programme",
+                    makeADonation: "Make a donation",
+                    otherWaysToGive: "Other ways to give",
+                    contactUs: "Contact us",
+                    stbssFoundationTitle: "STBSS FOUNDATION",
+                    address: "Kinhola, Badnapur, Jalna, Maharashtra 431213",
+                    viewOnMap: "View on Map",
+                    contactPhone: '(+91) 9923740706 / 942323912 / 8605850580',
+                    contactEmail: 'shritarashavalisanstha30.7.2016@gmail.com',
+                    copyright: "© 2025 STBSS Foundation. All rights reserved."
+                },
+                hi: {
+                    phoneNumber: "(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०", // Placeholder for actual Hindi translation
+                    emailAddress: "shritarashavalisanstha30.7.2016@gmail.com", // Placeholder for actual Hindi translation
+                    register: "रजिस्टर करें",
+                    login: "लॉगिन करें",
+                    home: "होम",
+                    about: "हमारे बारे में",
+                    volunteer: "स्वयंसेवक",
+                    blog: "ब्लॉग",
+                    media: "मीडिया",
+                    contact: "संपर्क करें",
+                    donate: "दान करें",
+                    heroTitle: "समुदायों को सशक्त बनाना, एक-एक कदम करके",
+                    heroSubtitle: "वंचित बच्चों और उनके परिवारों के लिए एक उज्जवल भविष्य बनाने के हमारे मिशन में शामिल हों।",
+                    donateNow: "अभी दान करें",
+                    learnMore: "और जानें",
+                    whatWeDoTitle: "हम क्या करते हैं",
+                    whatWeDoSubtitle: "हम जरूरतमंदों को व्यापक सहायता और सशक्तिकरण प्रदान करने के लिए प्रमुख क्षेत्रों पर ध्यान केंद्रित करते हैं।",
+                    educationTitle: "सभी के लिए शिक्षा",
+                    educationText: "हम यह सुनिश्चित करने के लिए गुणवत्तापूर्ण शिक्षा, स्कूल का सामान और छात्रवृत्ति प्रदान करते हैं कि हर बच्चे को सीखने और बढ़ने का अवसर मिले।",
+                    healthTitle: "स्वास्थ्य और कल्याण",
+                    healthText: "हमारे स्वास्थ्य शिविर और कल्याण कार्यक्रम ग्रामीण और शहरी समुदायों में परिवारों के लिए पोषण, स्वच्छता और चिकित्सा सहायता पर ध्यान केंद्रित करते हैं।",
+                    communityTitle: "सामुदायिक सशक्तिकरण",
+                    communityText: "व्यावसायिक प्रशिक्षण और कौशल विकास के माध्यम से, हम व्यक्तियों को वित्तीय स्वतंत्रता प्राप्त करने और बेहतर भविष्य बनाने के लिए सशक्त बनाते हैं।",
+                    howYouCanHelpTitle: "आप कैसे मदद कर सकते हैं",
+                    howYouCanHelpSubtitle: "आपकी सहायता हमारी सफलता के लिए महत्वपूर्ण है। यहां बताया गया है कि आप कैसे फर्क कर सकते हैं।",
+                    volunteerCardTitle: "स्वयंसेवक बनें",
+                    volunteerCardText: "हमारेB परियोजनाओं के लिए अपना समय और कौशल दें। आपका प्रयास जीवन बदल सकता है।",
+                    getStarted: "शुरू करें",
+                    donateCardTitle: "दान करें",
+                    donateCardText: "आपका वित्तीय योगदान सीधे हमारे कार्यक्रमों और सेवाओं का समर्थन करता है।",
+                    donateNowCard: "अभी दान करें",
+                    advocateCardTitle: "हमारे अधिवक्ता बनें",
+                    advocateCardText: "सोशल मीडिया पर हमारे मिशन औरB कार्यक्रमों कोB साझा करकेB हमारीB बातB फैलानेB मेंB हमारीB मददB करें।",
+                    learnMoreCard: "और जानें",
+                    latestBlogPostsTitle: "नवीनतम ब्लॉग पोस्ट",
+                    latestBlogPostsSubtitle: "हमारेB अनुभव,B अंतर्दृष्टिB औरB क्षेत्रB सेB अपडेटB पढ़ें।",
+                    blogPost1Title: "एक कलम की शक्ति: दान ने कैसे एक स्कूल बदल दिया",
+                    blogPost1Date: "20 जुलाई, 2025",
+                    blogPost1Text: "एक मार्मिक कहानी कि कैसे एक साधारण स्कूलB आपूर्तिB अभियानB नेB एकB छोटेB ग्रामीणB स्कूलB औरB उसकेB छात्रोंB केB जीवनB कोB बदलB दिया।",
+                    blogPost2Title: "स्वयंसेवक स्पॉटलाइट: मैदान पर हमारे नायकों से मिलें",
+                    blogPost2Date: "15 जुलाई, 2025",
+                    blogPost2Text: "हम उन अविश्वसनीय लोगों परB प्रकाशB डालतेB हैंB जोB हमारेB मिशनB कोBB हकीकतB बनानेB केB लिएB अपनाB समयB औरB ऊर्जाB समर्पितB करतेB हैं।",
+                    blogPost3Title: "सफलता काB जश्न:B संख्याओं मेंB हमाराB नवीनतमB स्वास्थ्यB शिविर",
+                    blogPost3Date: "10 जुलाई, 2025",
+                    blogPost3Text: "हमारेB हालB केB स्वास्थ्यB शिविरB केB प्रभावB परB एकB गहनB नज़र,B सेवाB किएB गएB रोगियोंB कीB संख्याB सेB लेकरB बचाएB गएB जीवनB तक।",
+                    callToActionTitle: "आपकी छोटी सी मदद बड़ा फर्क डालती है",
+                    callToActionSubtitle: "समर्थकों के हमारे समुदाय में शामिल हों और हमारे महत्वपूर्णB कामB कोB जारीB रखनेB मेंB हमारीB मददB करें।",
+                    makeDonationTitle: "दान करें",
+                    chooseAmountText: "एकB पूर्व निर्धारितB राशिB चुनेंB याB एकB कस्टमB राशिB दर्जB करें।",
+                    selectCurrency: "मुद्रा चुनें:",
+                    donateButton: "दान करें",
+                    accountabilityTitle: "जवाबदेही",
+                    financialInfo: "वित्तीय जानकारी",
+                    childSafeguarding: "बाल सुरक्षा",
+                    virtualTour: "आभासी दौरा",
+                    whistleblowerPolicy: "व्हिसल ब्लोअर नीति",
+                    importantLinksTitle: "महत्वपूर्ण लिंक",
+                    donorPortal: "दाता पोर्टल",
+                    careers: "करियर",
+                    faqs: "अक्सर पूछे जाने वाले प्रश्न",
+                    hermannGmeinerSchools: "हर्मन ग्मेनर स्कूल",
+                    institutions: "और संस्थान",
+                    vocationalTrainingCentre: "व्यावसायिक प्रशिक्षण केंद्र",
+                    resourcesTitle: "संसाधन",
+                    annualReport: "वार्षिक रिपोर्ट",
+                    blogFooter: "ब्लॉग",
+                    mediaFooter: "मीडिया",
+                    sitemap: "साइटमैप",
+                    getInvolvedTitle: "शामिल हों",
+                    partnerships: "साझेदारी",
+                    philanthropy: "परोपकार",
+                    giveInCelebration: "उत्सव मेंB दें",
+                    schoolProgramme: "स्कूल कार्यक्रम",
+                    makeADonation: "एक दान करें",
+                    otherWaysToGive: "देने के अन्य तरीके",
+                    contactUs: "हमसे संपर्क करें",
+                    stbssFoundationTitle: "एसटीबीएसएस फाउंडेशन",
+                    address: 'किन्होला, बदनापूर, जालना, महाराष्ट्र ४३१२१३',
+                    viewOnMap: "मानचित्र पर देखें",
+                    contactPhone: "(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०",
+                    contactEmail: "shritarashavalisanstha30.7.2016@gmail.com",
+                    copyright: "© 2025 एसटीबीएसएस फाउंडेशन। सभी अधिकार सुरक्षित।"
+                },
+                mr: {
+                    phoneNumber: "(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०", // Placeholder for actual Marathi translation
+                    emailAddress: "shritarashavalisanstha30.7.2016@gmail.com", // Placeholder for actual Marathi translation
+                    register: "नोंदणी करा",
+                    login: "लॉगिन करा",
+                    home: "मुख्यपृष्ठ",
+                    about: "आमच्याबद्दल",
+                    volunteer: "स्वयंसेवक",
+                    blog: "ब्लॉग",
+                    media: "मीडिया",
+                    contact: "संपर्क साधा",
+                    donate: "देणगी द्या",
+                    heroTitle: "समुदायांना सशक्त करणे, एका वेळी एक पाऊल",
+                    heroSubtitle: "वंचित मुलांना आणि त्यांच्या कुटुंबांना उज्ज्वल भविष्य घडवण्यासाठी आमच्या ध्येयात सामील व्हा.",
+                    donateNow: "आता देणगी द्या",
+                    learnMore: "अधिक जाणून घ्या",
+                    whatWeDoTitle: "आम्ही काय करतो",
+                    whatWeDoSubtitle: "गरजू लोकांना व्यापक समर्थन आणि सक्षमीकरण देण्यासाठी आम्ही मुख्य क्षेत्रांवर लक्ष केंद्रित करतो.",
+                    educationTitle: "सर्वांसाठी शिक्षण",
+                    educationText: "आम्ही प्रत्येक मुलाला शिकण्याची आणि वाढण्याची संधी मिळावी यासाठी दर्जेदार शिक्षण, शालेय साहित्य आणि शिष्यवृत्ती प्रदान करतो.",
+                    healthTitle: "आरोग्य आणि कल्याण",
+                    healthText: "आमचे आरोग्य शिबिरे आणि कल्याण कार्यक्रम ग्रामीण आणि शहरी समुदायांमधील कुटुंबांसाठी पोषण, स्वच्छता आणि वैद्यकीय सहाय्यावर लक्ष केंद्रित करतात.",
+                    communityTitle: "सामुदायिक सक्षमीकरण",
+                    communityText: "व्यावसायिक प्रशिक्षण आणि कौशल्य विकासाद्वारे, आम्ही व्यक्तींना आर्थिक स्वातंत्र्य मिळवण्यासाठी आणि चांगले भविष्य घडवण्यासाठी सक्षम करतो.",
+                    howYouCanHelpTitle: "तुम्ही कशी मदत करू शकता",
+                    howYouCanHelpSubtitle: "तुमचा पाठिंबा आमच्या यशासाठी महत्त्वाचा आहे. तुम्ही कसे फरक करू शकता ते येथे आहे.",
+                    volunteerCardTitle: "स्वयंसेवक बना",
+                    volunteerCardText: "आमच्या प्रकल्पांसाठी तुमचा वेळ आणि कौशल्ये द्या. तुमचे प्रयत्न जीवन बदलू शकतात.",
+                    getStarted: "सुरुवात करा",
+                    donateCardTitle: "देणगी द्या",
+                    donateCardText: "तुमचे आर्थिक योगदान थेट आमच्या कार्यक्रम आणि सेवांना समर्थन देते.",
+                    donateNowCard: "आता देणगी द्या",
+                    advocateCardTitle: "आमचे समर्थक व्हा",
+                    advocateCardText: "सोशल मीडियावर आमचे ध्येय आणि कार्यक्रम सामायिक करून आमचा शब्द पसरवण्यासाठी आम्हाला मदत करा.",
+                    learnMoreCard: "अधिक जाणून घ्या",
+                    latestBlogPostsTitle: "नवीनतम ब्लॉग पोस्ट",
+                    latestBlogPostsSubtitle: "आमच्या कथा, अंतर्दृष्टी आणि क्षेत्रातील अद्यतने वाचा.",
+                    blogPost1Title: "एका पेनाची शक्ती: देणग्यांनी एका शाळेला कसे बदलले",
+                    blogPost1Date: "20 जुलै, 2025",
+                    blogPost1Text: "एक हृदयस्पर्शी कथा की कसे एका साध्या शालेय साहित्य मोहिमेने एका लहान ग्रामीण शाळेला आणि तेथील विद्यार्थ्यांचे जीवन बदलले.",
+                    blogPost2Title: "स्वयंसेवक स्पॉटलाइट: मैदानावर आमच्या नायकांना भेटा",
+                    blogPost2Date: "15 जुलै, 2025",
+                    blogPost2Text: "आम्ही त्या अविश्वसनीय लोकांवर प्रकाश टाकतो जे आमचे ध्येय प्रत्यक्षात आणण्यासाठी त्यांचा वेळ आणि ऊर्जा समर्पित करतात.",
+                    blogPost3Title: "यशाचा उत्सव: आमच्या नवीनतम आरोग्य शिबिराची आकडेवारी",
+                    blogPost3Date: "10 जुलै, 2025",
+                    blogPost3Text: "आमच्या अलीकडील आरोग्य शिबिराच्या प्रभावावर सखोल नजर, सेवा दिलेल्या रुग्णांच्या संख्येपासून वाचलेल्या जीवनापर्यंत.",
+                    callToActionTitle: "तुमची छोटीशी मदत मोठा फरक करते",
+                    callToActionSubtitle: "आमच्याB समर्थकांच्याB समुदायातB सामीलB व्हाB आणिB आमच्याB महत्त्वपूर्णB कार्यालाB सुरूB ठेवण्यासाठीB मदतB करा.",
+                    makeDonationTitle: "देणगी द्या",
+                    chooseAmountText: "एकB पूर्वनिर्धारितB रक्कमB निवडाB किंवाB स्वतःचीB रक्कमB प्रविष्टB करा.",
+                    selectCurrency: "चलन निवडा:",
+                    donateButton: "देणगी द्या",
+                    accountabilityTitle: "उत्तरदायित्व",
+                    financialInfo: "आर्थिक माहिती",
+                    childSafeguarding: "बाल संरक्षण",
+                    virtualTour: "आभासी दौरा",
+                    whistleblowerPolicy: "व्हिसल ब्लोअर धोरण",
+                    importantLinksTitle: "महत्वाचे दुवे",
+                    donorPortal: "देणगीदार पोर्टल",
+                    careers: "करिअर",
+                    faqs: "वारंवार विचारले जाणारे प्रश्न",
+                    hermannGmeinerSchools: "हर्मन ग्मेनर शाळा",
+                    institutions: "आणि संस्था",
+                    vocationalTrainingCentre: "व्यावसायिक प्रशिक्षण केंद्र",
+                    resourcesTitle: "संसाधने",
+                    annualReport: "वार्षिक अहवाल",
+                    blogFooter: "ब्लॉग",
+                    mediaFooter: "मीडिया",
+                    sitemap: "साइटमॅप",
+                    getInvolvedTitle: "सहभागी व्हा",
+                    partnerships: "भागीदारी",
+                    philanthropy: "परोपकार",
+                    giveInCelebration: "उत्सवात देणगी द्या",
+                    schoolProgramme: "शालेय कार्यक्रम",
+                    makeADonation: "देणगी द्या",
+                    otherWaysToGive: "देणगी देण्याचे इतर मार्ग",
+                    contactUs: "आमच्याशी संपर्क साधा",
+                    stbssFoundationTitle: "एसटीबीएसएस फाउंडेशन",
+                    address: 'किन्होला, बदनापूर, जालना, महाराष्ट्र ४३१२१३',
+                    viewOnMap: "नकाशावर पहा",
+                    contactPhone: "(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०",
+                    contactEmail: "shritarashavalisanstha30.7.2016@gmail.com",
+                    copyright: "© 2025 एसटीबीएसएस फाउंडेशन. सर्व हक्क राखीव."
+                }
+            };
+
+            // Function to set the language
+            const setLanguage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                // Update the selected option in both dropdowns
+                languageSelectDesktop.value = lang;
+                languageSelectMobile.value = lang;
+                // Save preference to localStorage
+                localStorage.setItem('selectedLanguage', lang);
+            };
+
+            // Function to update all currency symbols
+            const updateCurrencySymbols = () => {
+                const selectedOption = currencySelect.options[currencySelect.selectedIndex];
+                const symbol = selectedOption.getAttribute('data-symbol');
+
+                currencySymbols.forEach(span => {
+                    span.textContent = symbol;
+                });
+                customCurrencySymbol.textContent = symbol;
+            };
+
+            // Event listener for currency change
+            currencySelect.addEventListener('change', updateCurrencySymbols);
+
+            // Add a change event listener to each radio button
+            donationRadios.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    // Update the input field with the selected radio button's value
+                    donationInput.value = event.target.value;
+
+                    // Add the animation class to the input field
+                    donationInput.classList.add('animate-flash');
+
+                    // Remove the animation class after a short duration to allow it to be re-triggered
+                    setTimeout(() => {
+                        donationInput.classList.remove('animate-flash');
+                    }, 500); // Duration matches the CSS animation duration
+                });
+            });
+
+            // Toggle the mobile menu on button click
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+            // Handle language selection for desktop
+            languageSelectDesktop.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
+            // Handle language selection for mobile
+            languageSelectMobile.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
+            // On page load, check for saved language preference or default to English
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            setLanguage(savedLanguage);
+
+            // Initial call to set the default currency symbol
+            updateCurrencySymbols();
+        });
+    </script>
+</body>
+
+</html>

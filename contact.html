@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | STBSS</title>
+    <link rel="icon" href="images/logo.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Mobile nav menu styles from index.html */
+        .mobile-nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .mobile-nav-menu.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- The top gray header has been removed -->
+
+    <nav class="bg-white/70 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-4xl font-bold text-gray-800 flex items-center space-x-4">
+                    <img src="images/logo.jpg" alt="Charity Logo" class="h-16 rounded-lg">
+                    <span>STBSS</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8 ml-10">
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="home">HOME</a>
+                    <a href="about.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="about">ABOUT</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="volunteer">VOLUNTEER</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
+                    <a href="media.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="media">MEDIA</a>
+                    <a href="contact.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="contact">CONTACT</a>
+                </div>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-gray-800 hover:text-green-600 focus:outline-none p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="relative">
+                    <select id="language-select-desktop" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                    </select>
+                </div>
+                <a href="#donate" class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300" data-lang-key="donate">DONATE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileMenu" class="mobile-nav-menu w-full bg-white/90 backdrop-blur-sm shadow-md z-40 md:hidden">
+        <div class="flex flex-col items-center py-4 space-y-4">
+            <a href="index.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="home">HOME</a>
+            <a href="about.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="about">ABOUT</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="volunteer">VOLUNTEER</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
+            <a href="media.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="media">MEDIA</a>
+            <a href="contact.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="contact">CONTACT</a>
+            <div class="relative">
+                <select id="language-select-mobile" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+            <a href="#donate" class="mobile-nav-link bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300" data-lang-key="donate">DONATE</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Get In Touch Section -->
+        <section id="contact" class="py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-lang-key="getInTouchTitle">Get In Touch</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto" data-lang-key="getInTouchDescription">
+                    We'd love to hear from you. Feel free to reach out with any questions or collaboration ideas.
+                </p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Contact Info Card -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-left hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="contactDetailsTitle">Contact Details</h3>
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-map-marker-alt text-green-600 text-xl mr-3"></i>
+                            <p class="text-gray-600" data-lang-key="address">Kinhola, Badnapur, Jalna, Maharashtra 431213</p>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-phone-alt text-green-600 text-xl mr-3"></i>
+                            <p class="text-gray-600" data-lang-key="contactNumbers">(+91) 9923740706 / 942323912 / 8605850580</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <p class="text-gray-600" data-lang-key="contactEmail">shritarashavalisanstha30.7.2016@gmail.com</p>
+                        </div>
+                         <a href="https://www.google.com/maps/place/SHRITARASHAVALI+BAHUUDDESHIYA+SEVABHAVI+SANSTHA/@20.0217849,75.7057264,17z/data=!3m1!4b1!4m6!3m5!1s0x3bdbb34900214e21:0xdee6e036d05fa0!8m2!3d20.0217799!4d75.7083013!16s%2Fg%2F11q3cx70bn?entry=ttu&g_ep=EgoyMDI1MDgwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="block w-full text-center mt-6 border border-green-600 text-green-600 font-bold py-3 px-6 rounded-lg hover:bg-green-600 hover:text-white transition duration-300">
+                        <i class="fas fa-map-marked-alt mr-2"></i> <span data-lang-key="viewOnMap">View on Map</span>
+                    </a>
+                    </div>
+                    <!-- Social Media Card -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-left hover:shadow-2xl transition duration-300">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4" data-lang-key="followUsTitle">Follow Us</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="followUsDescription">Stay updated with our latest news and events.</p>
+                        <div class="flex space-x-4 text-2xl">
+                            <a href="#" class="text-gray-400 hover:text-green-600 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600 transition duration-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600 transition duration-300"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-600 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span data-lang-key="copyrightYear">2024</span> STBSS. <span data-lang-key="rightsReserved">All rights reserved.</span></p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white" data-lang-key="privacyPolicy">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white" data-lang-key="termsOfService">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- External JavaScript files -->
+    <script src="../js/index.js"></script>
+
+    <!-- Built-in Translation Script -->
+    <script>
+        // This script handles the language translation for the webpage, now embedded directly.
+
+        // Translation dictionary
+        // This object holds all the text content for each language.
+        const translations = {
+            // English translations
+            en: {
+                // Header (phone and email links removed from here)
+                home: 'HOME',
+                about: 'ABOUT',
+                volunteer: 'VOLUNTEER',
+                blog: 'BLOG',
+                media: 'MEDIA',
+                contact: 'CONTACT',
+                donate: 'DONATE',
+                
+                // Main content
+                getInTouchTitle: 'Get In Touch',
+                getInTouchDescription: "We'd love to hear from you. Feel free to reach out with any questions or collaboration ideas.",
+                contactDetailsTitle: 'Contact Details',
+                address: 'Kinhola, Badnapur, Jalna, Maharashtra 431213',
+                contactNumbers: '(+91) 9923740706 / 942323912 / 8605850580',
+                contactEmail: 'shritarashavalisanstha30.7.2016@gmail.com',
+                viewOnMap: 'View on Map',
+                followUsTitle: 'Follow Us',
+                followUsDescription: 'Stay updated with our latest news and events.',
+
+                // Footer
+                copyrightYear: '2024',
+                rightsReserved: 'All rights reserved.',
+                privacyPolicy: 'Privacy Policy',
+                termsOfService: 'Terms of Service'
+            },
+            // Hindi translations
+            hi: {
+                // Header
+                home: 'होम',
+                about: 'बारे में',
+                volunteer: 'स्वयंसेवक',
+                blog: 'ब्लॉग',
+                media: 'मीडिया',
+                contact: 'संपर्क करें',
+                donate: 'दान करें',
+                
+                // Main content
+                getInTouchTitle: 'संपर्क में रहें',
+                getInTouchDescription: 'हमें आपसे सुनकर खुशी होगी। किसी भी प्रश्न या सहयोग के विचारों के साथ पहुंचने के लिए स्वतंत्र महसूस करें।',
+                contactDetailsTitle: 'संपर्क विवरण',
+                address: 'किन्होला, बदनापुर, जालना, महाराष्ट्र ४३१२१३',
+                contactNumbers: '(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०',
+                contactEmail: 'shritarashavalisanstha30.7.2016@gmail.com',
+                viewOnMap: 'मानचित्र पर देखें',
+                followUsTitle: 'हमारा अनुसरण करें',
+                followUsDescription: 'हमारे नवीनतम समाचारों और घटनाओं के साथ अपडेट रहें।',
+
+                // Footer
+                copyrightYear: '२०२४',
+                rightsReserved: 'सर्वाधिकार सुरक्षित।',
+                privacyPolicy: 'गोपनीयता नीति',
+                termsOfService: 'सेवा की शर्तें'
+            },
+            // Marathi translations
+            mr: {
+                // Header
+                home: 'मुख्यपृष्ठ',
+                about: 'आमच्याबद्दल',
+                volunteer: 'स्वयंसेवक',
+                blog: 'ब्लॉग',
+                media: 'मीडिया',
+                contact: 'संपर्क',
+                donate: 'देणगी द्या',
+                
+                // Main content
+                getInTouchTitle: 'संपर्कात रहा',
+                getInTouchDescription: 'तुमच्याकडून ऐकून आम्हाला आनंद होईल. कोणत्याही प्रश्नांसाठी किंवा सहकार्याच्या कल्पनांसाठी आमच्याशी संपर्क साधा.',
+                contactDetailsTitle: 'संपर्क तपशील',
+                address: 'किन्होला, बदनापूर, जालना, महाराष्ट्र ४३१२१३',
+                contactNumbers: '(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०',
+                contactEmail: 'shritarashavalisanstha30.7.2016@gmail.com',
+                viewOnMap: 'नकाशावर पहा',
+                followUsTitle: 'आमच्यासोबत रहा',
+                followUsDescription: 'आमच्या नवीनतम बातम्या आणि कार्यक्रमांसह अद्ययावत रहा.',
+
+                // Footer
+                copyrightYear: '२०२४',
+                rightsReserved: 'सर्व हक्क राखीव.',
+                privacyPolicy: 'गोपनीयता धोरण',
+                termsOfService: 'सेवा अटी'
+            }
+        };
+
+        // Function to set the language of the page
+        const setLanguage = (lang) => {
+            // Get all elements with a data-lang-key attribute
+            const elements = document.querySelectorAll('[data-lang-key]');
+            
+            // Loop through each element and update its text content
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                // Check if the translation exists for the current language
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update the document title based on the new language
+            if (translations[lang] && translations[lang].contact) {
+                document.title = `${translations[lang].contact} | STBSS`;
+            }
+        };
+
+        // Event listener for when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the desktop and mobile language selector elements
+            const desktopLangSelect = document.getElementById('language-select-desktop');
+            const mobileLangSelect = document.getElementById('language-select-mobile');
+            
+            // Default to English on page load
+            setLanguage('en');
+
+            // Add event listener to the desktop language selector
+            if (desktopLangSelect) {
+                desktopLangSelect.addEventListener('change', (event) => {
+                    const newLang = event.target.value;
+                    setLanguage(newLang);
+                    // Sync the mobile selector if it exists
+                    if (mobileLangSelect) {
+                        mobileLangSelect.value = newLang;
+                    }
+                });
+            }
+
+            // Add event listener to the mobile language selector
+            if (mobileLangSelect) {
+                mobileLangSelect.addEventListener('change', (event) => {
+                    const newLang = event.target.value;
+                    setLanguage(newLang);
+                    // Sync the desktop selector if it exists
+                    if (desktopLangSelect) {
+                        desktopLangSelect.value = newLang;
+                    }
+                });
+            }
+
+            // Mobile menu toggle logic
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

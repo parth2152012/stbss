@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="about_title">About STBSS Foundation</title>
+    <link rel="icon" href="images/logo.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Mobile menu specific styles */
+        .mobile-nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .mobile-nav-menu.open {
+            max-height: 500px; /* Adjust this value to be large enough to contain all menu items */
+        }
+        .mobile-nav-link {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .mobile-nav-menu.open .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom geometric styles */
+        .geometric-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.1; /* Subtle opacity */
+            z-index: 0; /* Behind content */
+        }
+
+        .shape-circle-1 {
+            width: 200px;
+            height: 200px;
+            background-color: #34d399; /* Green-500 */
+            border-radius: 50%;
+            top: 10%;
+            left: -5%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .shape-triangle-1 {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173.2px solid #2563eb; /* Blue-700 */
+            top: 30%;
+            right: -5%;
+            transform: rotate(45deg);
+            animation: float 10s infinite reverse ease-in-out;
+        }
+
+        .shape-circle-2 {
+            width: 150px;
+            height: 150px;
+            background-color: #f59e0b; /* Yellow-600 */
+            border-radius: 50%;
+            bottom: 15%;
+            left: 20%;
+            animation: float 9s infinite ease-in-out;
+        }
+
+        .shape-triangle-2 {
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 138.56px solid #ef4444; /* Red-500 */
+            bottom: -5%;
+            right: 10%;
+            transform: rotate(120deg);
+            animation: float 7s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-gray-900/70 backdrop-blur-sm text-white text-sm py-2 hidden md:block">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span data-lang-key="phone_number">(123) 456-7890</span>
+                <span data-lang-key="email_address">info@stbss.org</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-green-500" data-lang-key="register_link">REGISTER</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-green-500" data-lang-key="login_link">LOGIN</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white/70 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-4xl font-bold text-gray-800 flex items-center space-x-4">
+                    <img src="images/logo.jpg" alt="Charity Logo" class="h-16 rounded-lg"> <span>STBSS</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8 ml-10">
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_home">HOME</a>
+                    <a href="about.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_about">ABOUT</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_volunteer">VOLUNTEER</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_blog">BLOG</a>
+                    <a href="media.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_media">MEDIA</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_contact">CONTACT</a>
+                </div>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-gray-800 hover:text-green-600 focus:outline-none p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+            <div class="relative hidden md:block">
+                <select id="language-select-desktop" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+            <div class="hidden md:flex items-center space-x-2">
+                <button class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300" data-lang-key="donate_button">DONATE</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="mobile-nav-menu w-full bg-white/90 backdrop-blur-sm shadow-md z-30 md:hidden">
+        <div class="flex flex-col items-center py-4 space-y-4">
+            <a href="index.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_home">HOME</a>
+            <a href="about.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_about">ABOUT</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_volunteer">VOLUNTEER</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_blog">BLOG</a>
+            <a href="media.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_media">MEDIA</a>
+            <a href="contact.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="nav_contact">CONTACT</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="register_link">REGISTER</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="login_link">LOGIN</a>
+            <div class="relative w-fit mt-4">
+                <select id="language-select-mobile" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+            <button class="mobile-nav-link bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300 w-fit" data-lang-key="donate_button">DONATE</button>
+        </div>
+    </div>
+
+    <section class="py-16 md:py-24 bg-white min-h-screen relative geometric-bg">
+        <div class="geometric-shape shape-circle-1"></div>
+        <div class="geometric-shape shape-triangle-1"></div>
+        <div class="geometric-shape shape-circle-2"></div>
+        <div class="geometric-shape shape-triangle-2"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4" data-lang-key="about_heading">About STBSS Foundation</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8" data-lang-key="about_intro_paragraph_1">
+                STBSS Foundation is a non-profit organization dedicated to fostering sustainable development and empowering communities. We believe in creating a world where every individual has the opportunity to thrive, irrespective of their socio-economic background.
+            </p>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8" data-lang-key="about_intro_paragraph_2">
+                Our initiatives are focused on key areas such as education, health, and community empowerment. We work tirelessly to implement programs that bring about tangible and lasting change in the lives of underserved populations.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-left">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4" data-lang-key="mission_heading">Our Mission</h2>
+                    <p class="text-gray-700" data-lang-key="mission_paragraph">
+                        To empower communities through education, health, and sustainable development programs, fostering self-reliance and improving the quality of life for all.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md text-left">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4" data-lang-key="vision_heading">Our Vision</h2>
+                    <p class="text-gray-700" data-lang-key="vision_paragraph">
+                        A world where every individual has access to fundamental resources and opportunities, enabling them to realize their full potential and contribute to a prosperous society.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center" data-lang-key="our_values_heading">Our Core Values</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-hand-holding-heart"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_compassion_heading">Compassion</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_compassion_paragraph">
+                                We approach our work with deep empathy and understanding for the challenges faced by vulnerable populations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-lightbulb"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_integrity_heading">Integrity</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_integrity_paragraph">
+                                We operate with transparency, honesty, and accountability in all our endeavors.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-hands-helping"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_collaboration_heading">Collaboration</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_collaboration_paragraph">
+                                We believe in the power of partnerships and work with local communities, governments, and other organizations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-seedling"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_sustainability_heading">Sustainability</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_sustainability_paragraph">
+                                Our programs are designed for long-term impact, fostering self-sufficiency and environmental responsibility.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-users-gear"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_empowerment_heading">Empowerment</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_empowerment_paragraph">
+                                We empower individuals and communities to take ownership of their development and build a brighter future.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <div class="text-green-600 text-3xl mr-4"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="value_excellence_heading">Excellence</h3>
+                            <p class="text-gray-700 text-sm" data-lang-key="value_excellence_paragraph">
+                                We are committed to delivering high-quality programs and achieving measurable results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-green-700 text-white py-16 md:py-24 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="cta_heading">Join Our Cause Today!</h2>
+            <p class="text-lg md:text-xl mb-8" data-lang-key="cta_paragraph">
+                Every contribution, big or small, helps us make a difference. Volunteer, donate, or spread the word.
+            </p>
+            <a href="#" class="bg-white text-green-700 font-semibold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" data-lang-key="cta_button">GET INVOLVED</a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-lang-key="footer_about_heading">About STBSS</h3>
+                <p class="text-gray-400 text-sm" data-lang-key="footer_about_paragraph">
+                    STBSS Foundation is dedicated to empowering communities through education, health, and sustainable development.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-lang-key="footer_quick_links_heading">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_home">Home</a></li>
+                    <li><a href="about.html" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_about">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_volunteer">Volunteer</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_blog">Blog</a></li>
+                    <li><a href="media.html" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_media">Media</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-green-500 text-sm" data-lang-key="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-lang-key="footer_contact_heading">Contact Info</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-green-500"></i> <span data-lang-key="footer_address">123 Charity Lane, Philanthropy City, PC 12345</span></li>
+                    <li class="flex items-center"><i class="fas fa-phone mr-2 text-green-500"></i> <span data-lang-key="footer_phone">(123) 456-7890</span></li>
+                    <li class="flex items-center"><i class="fas fa-envelope mr-2 text-green-500"></i> <span data-lang-key="footer_email">info@stbss.org</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-lang-key="footer_follow_us_heading">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-green-500"><i class="fab fa-facebook-f text-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-500"><i class="fab fa-twitter text-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-500"><i class="fab fa-instagram text-lg"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-500"><i class="fab fa-linkedin-in text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm" data-lang-key="footer_copyright">
+            © 2025 STBSS Foundation. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+            // Animate links on open/close
+            var links = mobileMenu.querySelectorAll('.mobile-nav-link');
+            if (mobileMenu.classList.contains('open')) {
+                links.forEach((link, index) => {
+                    setTimeout(() => {
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateY(0)';
+                    }, index * 50); // Stagger animation
+                });
+            } else {
+                links.forEach((link) => {
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateY(-20px)';
+                });
+            }
+        });
+
+        // Language Translation Logic
+        const translations = {
+            en: {
+                about_title: "About STBSS Foundation",
+                phone_number: "(123) 456-7890",
+                email_address: "info@stbss.org",
+                register_link: "REGISTER",
+                login_link: "LOGIN",
+                nav_home: "HOME",
+                nav_about: "ABOUT",
+                nav_volunteer: "VOLUNTEER",
+                nav_blog: "BLOG",
+                nav_media: "MEDIA",
+                nav_contact: "CONTACT",
+                donate_button: "DONATE",
+                about_heading: "About STBSS Foundation",
+                about_intro_paragraph_1: "STBSS Foundation is a non-profit organization dedicated to fostering sustainable development and empowering communities. We believe in creating a world where every individual has the opportunity to thrive, irrespective of their socio-economic background.",
+                about_intro_paragraph_2: "Our initiatives are focused on key areas such as education, health, and community empowerment. We work tirelessly to implement programs that bring about tangible and lasting change in the lives of underserved populations.",
+                mission_heading: "Our Mission",
+                mission_paragraph: "To empower communities through education, health, and sustainable development programs, fostering self-reliance and improving the quality of life for all.",
+                vision_heading: "Our Vision",
+                vision_paragraph: "A world where every individual has access to fundamental resources and opportunities, enabling them to realize their full potential and contribute to a prosperous society.",
+                our_values_heading: "Our Core Values",
+                value_compassion_heading: "Compassion",
+                value_compassion_paragraph: "We approach our work with deep empathy and understanding for the challenges faced by vulnerable populations.",
+                value_integrity_heading: "Integrity",
+                value_integrity_paragraph: "We operate with transparency, honesty, and accountability in all our endeavors.",
+                value_collaboration_heading: "Collaboration",
+                value_collaboration_paragraph: "We believe in the power of partnerships and work with local communities, governments, and other organizations.",
+                value_sustainability_heading: "Sustainability",
+                value_sustainability_paragraph: "Our programs are designed for long-term impact, fostering self-sufficiency and environmental responsibility.",
+                value_empowerment_heading: "Empowerment",
+                value_empowerment_paragraph: "We empower individuals and communities to take ownership of their development and build a brighter future.",
+                value_excellence_heading: "Excellence",
+                value_excellence_paragraph: "We are committed to delivering high-quality programs and achieving measurable results.",
+                cta_heading: "Join Our Cause Today!",
+                cta_paragraph: "Every contribution, big or small, helps us make a difference. Volunteer, donate, or spread the word.",
+                cta_button: "GET INVOLVED",
+                footer_about_heading: "About STBSS",
+                footer_about_paragraph: "STBSS Foundation is dedicated to empowering communities through education, health, and sustainable development.",
+                footer_quick_links_heading: "Quick Links",
+                footer_contact_heading: "Contact Info",
+                footer_address: "123 Charity Lane, Philanthropy City, PC 12345",
+                footer_phone: "(123) 456-7890",
+                footer_email: "info@stbss.org",
+                footer_follow_us_heading: "Follow Us",
+                footer_copyright: "© 2025 STBSS Foundation. All rights reserved."
+            },
+            hi: {
+                about_title: "एसटीबीएसएस फाउंडेशन के बारे में",
+                phone_number: "(123) 456-7890",
+                email_address: "info@stbss.org",
+                register_link: "पंजीकरण करें",
+                login_link: "लॉग इन करें",
+                nav_home: "होम",
+                nav_about: "हमारे बारे में",
+                nav_volunteer: "स्वयंसेवक बनें",
+                nav_blog: "ब्लॉग",
+                nav_media: "मीडिया",
+                nav_contact: "संपर्क करें",
+                donate_button: "दान करें",
+                about_heading: "एसटीबीएसएस फाउंडेशन के बारे में",
+                about_intro_paragraph_1: "एसटीबीएसएस फाउंडेशन एक गैर-लाभकारी संगठन है जो सतत विकास को बढ़ावा देने और समुदायों को सशक्त बनाने के लिए समर्पित है। हमारा मानना है कि एक ऐसी दुनिया का निर्माण करना चाहिए जहाँ हर व्यक्ति को अपनी सामाजिक-आर्थिक पृष्ठभूमि के बावजूद विकसित होने का अवसर मिले।",
+                about_intro_paragraph_2: "हमारी पहल शिक्षा, स्वास्थ्य और सामुदायिक सशक्तिकरण जैसे प्रमुख क्षेत्रों पर केंद्रित है। हम वंचित आबादी के जीवन में मूर्त और स्थायी परिवर्तन लाने वाले कार्यक्रमों को लागू करने के लिए अथक प्रयास करते हैं।",
+                mission_heading: "हमारा मिशन",
+                mission_paragraph: "शिक्षा, स्वास्थ्य और सतत विकास कार्यक्रमों के माध्यम से समुदायों को सशक्त बनाना, आत्मनिर्भरता को बढ़ावा देना और सभी के लिए जीवन की गुणवत्ता में सुधार करना।",
+                vision_heading: "हमारी दृष्टि",
+                vision_paragraph: "एक ऐसी दुनिया जहाँ प्रत्येक व्यक्ति को मौलिक संसाधनों और अवसरों तक पहुँच प्राप्त हो, जिससे वे अपनी पूरी क्षमता का एहसास कर सकें और एक समृद्ध समाज में योगदान कर सकें।",
+                our_values_heading: "हमारे मूल मूल्य",
+                value_compassion_heading: "करुणा",
+                value_compassion_paragraph: "हम कमजोर आबादी द्वारा सामना की जाने वाली चुनौतियों के प्रति गहरी सहानुभूति और समझ के साथ अपने काम को करते हैं।",
+                value_integrity_heading: "अखंडता",
+                value_integrity_paragraph: "हम अपने सभी प्रयासों में पारदर्शिता, ईमानदारी और जवाबदेही के साथ काम करते हैं।",
+                value_collaboration_heading: "सहयोग",
+                value_collaboration_paragraph: "हम साझेदारी की शक्ति में विश्वास करते हैं और स्थानीय समुदायों, सरकारों और अन्य संगठनों के साथ काम करते हैं।",
+                value_sustainability_heading: "स्थिरता",
+                value_sustainability_paragraph: "हमारे कार्यक्रम दीर्घकालिक प्रभाव के लिए डिज़ाइन किए गए हैं, जो आत्मनिर्भरता और पर्यावरणीय जिम्मेदारी को बढ़ावा देते हैं।",
+                value_empowerment_heading: "सशक्तिकरण",
+                value_empowerment_paragraph: "हम व्यक्तियों और समुदायों को उनके विकास का स्वामित्व लेने और एक उज्जवल भविष्य बनाने के लिए सशक्त बनाते हैं।",
+                value_excellence_heading: "उत्कृष्टता",
+                value_excellence_paragraph: "हम उच्च गुणवत्ता वाले कार्यक्रमों को वितरित करने और मापने योग्य परिणाम प्राप्त करने के लिए प्रतिबद्ध हैं।",
+                cta_heading: "आज ही हमारे साथ जुड़ें!",
+                cta_paragraph: "प्रत्येक योगदान, छोटा या बड़ा, हमें एक फर्क करने में मदद करता है। स्वयंसेवा करें, दान करें, या जानकारी फैलाएँ।",
+                footer_about_heading: "एसटीबीएसएस के बारे में",
+                footer_about_paragraph: "एसटीबीएसएस फाउंडेशन शिक्षा, स्वास्थ्य और सतत विकास के माध्यम से समुदायों को सशक्त बनाने के लिए समर्पित है।",
+                footer_quick_links_heading: "त्वरित लिंक",
+                footer_contact_heading: "संपर्क जानकारी",
+                footer_address: "123 चैरिटी लेन, परोपकार शहर, पीसी 12345",
+                footer_phone: "(123) 456-7890",
+                footer_email: "info@stbss.org",
+                footer_follow_us_heading: "हमें फॉलो करें",
+                footer_copyright: "© 2025 एसटीबीएसएस फाउंडेशन। सर्वाधिकार सुरक्षित।"
+            },
+            mr: {
+                about_title: "एसटीबीएसएस फाउंडेशन बद्दल",
+                phone_number: "(123) 456-7890",
+                email_address: "info@stbss.org",
+                register_link: "नोंदणी करा",
+                login_link: "लॉग इन करा",
+                nav_home: "मुख्यपृष्ठ",
+                nav_about: "आमच्याबद्दल",
+                nav_volunteer: "स्वयंसेवक",
+                nav_blog: "ब्लॉग",
+                nav_media: "मीडिया",
+                nav_contact: "संपर्क साधा",
+                donate_button: "दान करा",
+                about_heading: "एसटीबीएसएस फाउंडेशन बद्दल",
+                about_intro_paragraph_1: "एसटीबीएसएस फाउंडेशन ही एक ना-नफा संस्था आहे जी शाश्वत विकास आणि समुदायांना सशक्त बनवण्यासाठी समर्पित आहे. आमचा विश्वास आहे की, प्रत्येक व्यक्तीला त्यांच्या सामाजिक-आर्थिक पार्श्वभूमीची पर्वा न करता, भरभराटीची संधी मिळावी अशी एक जागतिक निर्मिती करणे आवश्यक आहे.",
+                about_intro_paragraph_2: "आमच्या पुढाकारांमध्ये शिक्षण, आरोग्य आणि सामुदायिक सक्षमीकरण यांसारख्या प्रमुख क्षेत्रांवर लक्ष केंद्रित केले आहे. वंचित लोकसंख्येच्या जीवनात ठोस आणि चिरस्थायी बदल घडवून आणणाऱ्या कार्यक्रमांची अंमलबजावणी करण्यासाठी आम्ही अथक प्रयत्न करतो.",
+                mission_heading: "आमचे ध्येय",
+                mission_paragraph: "शिक्षण, आरोग्य आणि शाश्वत विकास कार्यक्रमांद्वारे समुदायांना सशक्त करणे, आत्मनिर्भरता वाढवणे आणि सर्वांसाठी जीवनाची गुणवत्ता सुधारणे.",
+                vision_heading: "आमची दृष्टी",
+                vision_paragraph: "एक असे जग जिथे प्रत्येक व्यक्तीला मूलभूत संसाधने आणि संधी उपलब्ध आहेत, ज्यामुळे ते त्यांची पूर्ण क्षमता ओळखू शकतील आणि समृद्ध समाजात योगदान देऊ शकतील.",
+                our_values_heading: "आमची प्रमुख मूल्ये",
+                value_compassion_heading: "करुणा",
+                value_compassion_paragraph: "आम्ही आमच्या कामाला असुरक्षित लोकसंख्येसमोर येणाऱ्या आव्हानांबद्दल खोल सहानुभूती आणि समजून घेतो.",
+                value_integrity_heading: "अखंडता",
+                value_integrity_paragraph: "आम्ही आमच्या सर्व प्रयत्नांमध्ये पारदर्शकता, प्रामाणिकपणा आणि जबाबदारीने कार्य करतो.",
+                value_collaboration_heading: "सहयोग",
+                value_collaboration_paragraph: "आम्ही भागीदारीच्या सामर्थ्यावर विश्वास ठेवतो आणि स्थानिक समुदाय, सरकार आणि इतर संस्थांसोबत काम करतो.",
+                value_sustainability_heading: "दीर्घकाळ टिकणारे",
+                value_sustainability_paragraph: "आमचे कार्यक्रम दीर्घकाळ चालणाऱ्या प्रभावासाठी डिझाइन केले आहेत, जे आत्मनिर्भरता आणि पर्यावरणीय जबाबदारीला प्रोत्साहन देतात.",
+                value_empowerment_heading: "सक्षमीकरण",
+                value_empowerment_paragraph: "आम्ही व्यक्ती आणि समुदायांना त्यांच्या विकासाची जबाबदारी घेण्यास आणि उज्ज्वल भविष्य घडवण्यासाठी सक्षम करतो.",
+                value_excellence_heading: "उत्कृष्टता",
+                value_excellence_paragraph: "आम्ही उच्च-गुणवत्तेचे कार्यक्रम वितरित करण्यासाठी आणि मोजण्यायोग्य परिणाम प्राप्त करण्यासाठी वचनबद्ध आहोत.",
+                cta_heading: "आजच आमच्या कार्यात सामील व्हा!",
+                cta_paragraph: "प्रत्येक योगदान, मोठे असो किंवा लहान, आम्हाला फरक करण्यास मदत करते. स्वयंसेवा करा, दान करा किंवा माहितीचा प्रसार करा.",
+                footer_about_heading: "एसटीबीएसएस बद्दल",
+                footer_about_paragraph: "एसटीबीएसएस फाउंडेशन शिक्षण, आरोग्य आणि शाश्वत विकासाद्वारे समुदायांना सशक्त बनवण्यासाठी समर्पित आहे.",
+                footer_quick_links_heading: "त्वरित दुवे",
+                footer_contact_heading: "संपर्क माहिती",
+                footer_address: "123 चॅरिटी लेन, फिलान्थ्रॉपी शहर, पीसी 12345",
+                footer_phone: "(123) 456-7890",
+                footer_email: "info@stbss.org",
+                footer_follow_us_heading: "आमचे अनुसरण करा",
+                footer_copyright: "© 2025 एसटीबीएसएस फाउंडेशन. सर्व हक्क राखीव."
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'TITLE') {
+                        document.title = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            // Update the lang attribute of the html tag
+            document.documentElement.lang = lang;
+            localStorage.setItem('selectedLanguage', lang);
+        };
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Default to English
+            const desktopSelector = document.getElementById('language-select-desktop');
+            const mobileSelector = document.getElementById('language-select-mobile');
+
+            if (desktopSelector) {
+                desktopSelector.value = savedLanguage;
+                desktopSelector.addEventListener('change', (event) => {
+                    setLanguage(event.target.value);
+                });
+            }
+            if (mobileSelector) {
+                mobileSelector.value = savedLanguage;
+                mobileSelector.addEventListener('change', (event) => {
+                    setLanguage(event.target.value);
+                });
+            }
+
+            setLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>
