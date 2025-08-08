@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer | STBSS</title>
+    <link rel="icon" href="images/logo.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Mobile nav menu styles from index.html */
+        .mobile-nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .mobile-nav-menu.open {
+            max-height: 500px;
+        }
+
+        /* Fade-in animation for hero section */
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(90px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.9s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white/70 backdrop-blur-sm shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-4xl font-bold text-gray-800 flex items-center space-x-4">
+                    <img src="images/logo.jpg" alt="Charity Logo" class="h-16 rounded-lg">
+                    <span>STBSS</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8 ml-10">
+                    <a href="index.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="home">HOME</a>
+                    <a href="about.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="about">ABOUT</a>
+                    <a href="volunteer.html" class="text-green-600 font-medium" data-lang-key="volunteer">VOLUNTEER</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
+                    <a href="media.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="media">MEDIA</a>
+                    <a href="contact.html" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="contact">CONTACT</a>
+                </div>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-gray-800 hover:text-green-600 focus:outline-none p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="relative">
+                    <select id="language-select-desktop" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                    </select>
+                </div>
+                <a href="donation.html" class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300" data-lang-key="donate">DONATE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileMenu" class="mobile-nav-menu w-full bg-white/90 backdrop-blur-sm shadow-md z-40 md:hidden">
+        <div class="flex flex-col items-center py-4 space-y-4">
+            <a href="index.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="home">HOME</a>
+            <a href="about.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="about">ABOUT</a>
+            <a href="volunteer.html" class="mobile-nav-link text-green-600 font-medium" data-lang-key="volunteer">VOLUNTEER</a>
+            <a href="#" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
+            <a href="media.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="media">MEDIA</a>
+            <a href="contact.html" class="mobile-nav-link text-gray-600 font-medium hover:text-green-600" data-lang-key="contact">CONTACT</a>
+            <div class="relative w-fit mt-4">
+                <select id="language-select-mobile" class="bg-gray-200 text-gray-800 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+            <a href="donation.html" class="mobile-nav-link bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300 w-fit" data-lang-key="donate">DONATE</a>
+        </div>
+    </div>
+
+    <main class="py-12 animate-fade-in-up">
+        <section class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4" data-lang-key="volunteerTitle">Become a Volunteer</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-lang-key="volunteerSubtitle">
+                    Join our mission to create a better future. Your time and effort can make a real difference in the lives of those we serve.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center" data-lang-key="formTitle">Volunteer Application Form</h2>
+                <form action="https://formspree.io/f/myzpbovq" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-semibold mb-2" data-lang-key="formName">Full Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-green-500 transition duration-300">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-semibold mb-2" data-lang-key="formEmail">Email Address</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-green-500 transition duration-300">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-semibold mb-2" data-lang-key="formPhone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-green-500 transition duration-300">
+                    </div>
+                    <div>
+                        <label for="area" class="block text-gray-700 font-semibold mb-2" data-lang-key="formArea">Preferred Area of Volunteering</label>
+                        <select id="area" name="area" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-green-500 transition duration-300">
+                            <option value="" data-lang-key="selectArea">-- Select an Area --</option>
+                            <option value="teaching" data-lang-key="areaTeaching">Teaching & Mentoring</option>
+                            <option value="events" data-lang-key="areaEvents">Event Support</option>
+                            <option value="admin" data-lang-key="areaAdmin">Administrative Support</option>
+                            <option value="fundraising" data-lang-key="areaFundraising">Fundraising</option>
+                            <option value="other" data-lang-key="areaOther">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="formMessage">Why do you want to volunteer with us?</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-green-500 transition duration-300"></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-green-700 transition duration-300 transform hover:scale-105" data-lang-key="formSubmit">
+                            SUBMIT APPLICATION
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; <span data-lang-key="copyrightYear">2024</span> STBSS. <span data-lang-key="rightsReserved">All rights reserved.</span></p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white" data-lang-key="privacyPolicy">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white" data-lang-key="termsOfService">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const languageSelectDesktop = document.getElementById('language-select-desktop');
+            const languageSelectMobile = document.getElementById('language-select-mobile');
+
+            // Translation dictionary
+            const translations = {
+                en: {
+                    home: 'HOME',
+                    about: 'ABOUT',
+                    volunteer: 'VOLUNTEER',
+                    blog: 'BLOG',
+                    media: 'MEDIA',
+                    contact: 'CONTACT',
+                    donate: 'DONATE',
+                    volunteerTitle: 'Become a Volunteer',
+                    volunteerSubtitle: 'Join our mission to create a better future. Your time and effort can make a real difference in the lives of those we serve.',
+                    formTitle: 'Volunteer Application Form',
+                    formName: 'Full Name',
+                    formEmail: 'Email Address',
+                    formPhone: 'Phone Number',
+                    formArea: 'Preferred Area of Volunteering',
+                    selectArea: '-- Select an Area --',
+                    areaTeaching: 'Teaching & Mentoring',
+                    areaEvents: 'Event Support',
+                    areaAdmin: 'Administrative Support',
+                    areaFundraising: 'Fundraising',
+                    areaOther: 'Other',
+                    formMessage: 'Why do you want to volunteer with us?',
+                    formSubmit: 'SUBMIT APPLICATION',
+                    copyrightYear: '2024',
+                    rightsReserved: 'All rights reserved.',
+                    privacyPolicy: 'Privacy Policy',
+                    termsOfService: 'Terms of Service'
+                },
+                hi: {
+                    home: 'होम',
+                    about: 'बारे में',
+                    volunteer: 'स्वयंसेवक',
+                    blog: 'ब्लॉग',
+                    media: 'मीडिया',
+                    contact: 'संपर्क करें',
+                    donate: 'दान करें',
+                    volunteerTitle: 'स्वयंसेवक बनें',
+                    volunteerSubtitle: 'एक बेहतर भविष्य बनाने के हमारे मिशन में शामिल हों। आपका समय और प्रयास उन लोगों के जीवन में एक वास्तविक बदलाव ला सकता है जिनकी हम सेवा करते हैं।',
+                    formTitle: 'स्वयंसेवक आवेदन पत्र',
+                    formName: 'पूरा नाम',
+                    formEmail: 'ईमेल पता',
+                    formPhone: 'फ़ोन नंबर',
+                    formArea: 'पसंदीदा स्वयंसेवा क्षेत्र',
+                    selectArea: '-- एक क्षेत्र चुनें --',
+                    areaTeaching: 'शिक्षण और मार्गदर्शन',
+                    areaEvents: 'कार्यक्रम सहायता',
+                    areaAdmin: 'प्रशासनिक सहायता',
+                    areaFundraising: 'धन उगाही',
+                    areaOther: 'अन्य',
+                    formMessage: 'आप हमारे साथ स्वयंसेवा क्यों करना चाहते हैं?',
+                    formSubmit: 'आवेदन जमा करें',
+                    copyrightYear: '२०२४',
+                    rightsReserved: 'सर्वाधिकार सुरक्षित।',
+                    privacyPolicy: 'गोपनीयता नीति',
+                    termsOfService: 'सेवा की शर्तें'
+                },
+                mr: {
+                    home: 'मुख्यपृष्ठ',
+                    about: 'आमच्याबद्दल',
+                    volunteer: 'स्वयंसेवक',
+                    blog: 'ब्लॉग',
+                    media: 'मीडिया',
+                    contact: 'संपर्क',
+                    donate: 'देणगी द्या',
+                    volunteerTitle: 'स्वयंसेवक बना',
+                    volunteerSubtitle: 'उत्तम भविष्य घडवण्यासाठी आमच्या ध्येयात सामील व्हा. तुमचा वेळ आणि प्रयत्नांमुळे ज्यांची आम्ही सेवा करतो त्यांच्या जीवनात खरा फरक पडू शकतो.',
+                    formTitle: 'स्वयंसेवक अर्ज फॉर्म',
+                    formName: 'पूर्ण नाव',
+                    formEmail: 'ईमेल पत्ता',
+                    formPhone: 'फोन नंबर',
+                    formArea: 'स्वयंसेवा करण्याची पसंत',
+                    selectArea: '-- एक क्षेत्र निवडा --',
+                    areaTeaching: 'शिकवणे आणि मार्गदर्शन',
+                    areaEvents: 'कार्यक्रमांसाठी मदत',
+                    areaAdmin: 'प्रशासनिक मदत',
+                    areaFundraising: 'निधी उभारणी',
+                    areaOther: 'इतर',
+                    formMessage: 'तुम्ही आमच्यासोबत स्वयंसेवा का करू इच्छिता?',
+                    formSubmit: 'अर्ज सादर करा',
+                    copyrightYear: '२०२४',
+                    rightsReserved: 'सर्व हक्क राखीव.',
+                    privacyPolicy: 'गोपनीयता धोरण',
+                    termsOfService: 'सेवा अटी'
+                }
+            };
+
+            const setLanguage = (lang) => {
+                const elements = document.querySelectorAll('[data-lang-key]');
+                elements.forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                if (lang === 'en') {
+                    document.title = 'Volunteer | STBSS';
+                } else if (lang === 'hi') {
+                    document.title = 'स्वयंसेवक | एसटीबीएसएस';
+                } else if (lang === 'mr') {
+                    document.title = 'स्वयंसेवक | एसटीबीएसएस';
+                }
+            };
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+            languageSelectDesktop.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
+            languageSelectMobile.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+            
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            setLanguage(savedLanguage);
+        });
+    </script>
+</body>
+</html>

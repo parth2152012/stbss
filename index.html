@@ -65,6 +65,45 @@
         .animate-flash {
             animation: flash-border 1s ease-in-out;
         }
+
+        /* Fade-in animation for hero section */
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(90px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.9s ease-in-out forwards;
+        }
+
+        /* Pop-in animation for buttons */
+        @keyframes pop-in {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .animate-pop-in {
+            animation: pop-in 0.5s ease-out forwards;
+        }
+
+        footer{
+            background-color: black;
+        }
+        
     </style>
 </head>
 
@@ -82,7 +121,7 @@
                         data-lang-key="home">HOME</a>
                     <a href="about.html" class="text-gray-600 font-medium hover:text-green-600"
                         data-lang-key="about">ABOUT</a>
-                    <a href="#" class="text-gray-600 font-medium hover:text-green-600"
+                    <a href="volunteer.html" class="text-gray-600 font-medium hover:text-green-600"
                         data-lang-key="volunteer">VOLUNTEER</a>
                     <a href="#" class="text-gray-600 font-medium hover:text-green-600" data-lang-key="blog">BLOG</a>
                     <a href="media.html" class="text-gray-600 font-medium hover:text-green-600"
@@ -110,7 +149,7 @@
                     </select>
                 </div>
                 <button
-                    class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
+                    class="bg-green-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-green-700 transition duration-300 animate-pop-in"
                     data-lang-key="donate">DONATE</button>
             </div>
         </div>
@@ -145,7 +184,7 @@
     </div>
 
     <main>
-        <section class="hero-bg h-screen flex items-center justify-center text-center text-white">
+        <section class="1 hero-bg h-screen flex items-center justify-center text-center text-white animate-fade-in-up">
             <div class="bg-gray-900/50 p-8 rounded-xl max-w-4xl mx-auto backdrop-blur-sm">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up" data-lang-key="heroTitle">Empowering
                     Communities, One Step at a Time</h1>
@@ -164,7 +203,7 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-gray-100">
+        <section class="2 py-16 md:py-24 bg-gray-100 scroll-animate">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="whatWeDoTitle">What We Do
                 </h2>
@@ -206,7 +245,7 @@
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-white">
+        <section class="3 py-16 md:py-24 bg-white scroll-animate">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="howYouCanHelpTitle">How You
                     Can Help</h2>
@@ -222,7 +261,7 @@
                         <p class="text-gray-700 mb-4" data-lang-key="volunteerCardText">
                             Lend your time and skills to our projects. Your effort can change lives.
                         </p>
-                        <a href="#"
+                        <a href="volunteer.html"
                             class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors duration-300"
                             data-lang-key="getStarted">GET STARTED</a>
                     </div>
@@ -240,21 +279,15 @@
                     </div>
                     <div
                         class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
-                        <div class="text-green-600 text-5xl mb-4"><i class="fas fa-bullhorn"></i></div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2" data-lang-key="advocateCardTitle">Be Our
-                            Advocate</h3>
-                        <p class="text-gray-700 mb-4" data-lang-key="advocateCardText">
-                            Help us spread the word by sharing our mission and events on social media.
-                        </p>
-                        <a href="#"
-                            class="bg-gray-800 text-white font-semibold py-2 px-6 rounded-full hover:bg-gray-700 transition-colors duration-300"
-                            data-lang-key="learnMoreCard">LEARN MORE</a>
+                        <div class="text-green-600 text-5xl mb-4">
+                            <img src="images/dono-qr.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 bg-gray-100">
+        <section class="4 py-16 md:py-24 bg-gray-100 scroll-animate">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-lang-key="latestBlogPostsTitle">
                     Latest Blog Posts</h2>
@@ -302,7 +335,7 @@
             </div>
         </section>
 
-        <section class="bg-gray-800 text-white py-16 md:py-24">
+        <section class="5 bg-gray-800 text-white py-16 md:py-24 scroll-animate">
             <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
                 <h2 class="text-3xl md:text-5xl font-bold mb-4" data-lang-key="callToActionTitle">Your Small Help Makes
                     a Big Difference</h2>
@@ -636,7 +669,7 @@
                     makeADonation: "एक दान करें",
                     otherWaysToGive: "देने के अन्य तरीके",
                     contactUs: "हमसे संपर्क करें",
-                    stbssFoundationTitle: "एसटीबीएसएस फाउंडेशन",
+                    stbssFoundationTitle: "STBSS FOUNDATION",
                     address: 'किन्होला, बदनापूर, जालना, महाराष्ट्र ४३१२१३',
                     viewOnMap: "मानचित्र पर देखें",
                     contactPhone: "(+९१) ९९२३७४०७०६ / ९४२३२३९१२ / ८६०५८५०५८०",
@@ -690,9 +723,9 @@
                     blogPost3Date: "10 जुलै, 2025",
                     blogPost3Text: "आमच्या अलीकडील आरोग्य शिबिराच्या प्रभावावर सखोल नजर, सेवा दिलेल्या रुग्णांच्या संख्येपासून वाचलेल्या जीवनापर्यंत.",
                     callToActionTitle: "तुमची छोटीशी मदत मोठा फरक करते",
-                    callToActionSubtitle: "आमच्याB समर्थकांच्याB समुदायातB सामीलB व्हाB आणिB आमच्याB महत्त्वपूर्णB कार्यालाB सुरूB ठेवण्यासाठीB मदतB करा.",
+                    callToActionSubtitle: "आमच्या समर्थकांच्या समुदायात सामील व्हा आणि आमच्या महत्त्वपूर्ण कार्याला सुरू ठेवण्यासाठी मदत करा.",
                     makeDonationTitle: "देणगी द्या",
-                    chooseAmountText: "एकB पूर्वनिर्धारितB रक्कमB निवडाB किंवाB स्वतःचीB रक्कमB प्रविष्टB करा.",
+                    chooseAmountText: "एक पूर्वनिर्धारित रक्कम निवडा किंवा स्वतःची रक्कम प्रविष्ट करा.",
                     selectCurrency: "चलन निवडा:",
                     donateButton: "देणगी द्या",
                     accountabilityTitle: "उत्तरदायित्व",
@@ -795,6 +828,26 @@
 
             // Initial call to set the default currency symbol
             updateCurrencySymbols();
+        });
+
+        // Place this script near the end of your index.html file (before </body>)
+        // This will observe elements with the class "scroll-animate"
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        // Optionally unobserve once animated (if you don't want repeated animations)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
